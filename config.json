@@ -1,28 +1,4 @@
 {
-  "log": {
-    "level": "warn",
-    "timestamp": true
-  },
-  "dns": {
-    "servers": [
-      {
-        "tag": "cloudflare-doh",
-        "address": "https://1.1.1.1/dns-query",
-        "detour": "direct"
-      },
-      {
-        "tag": "google-doh",
-        "address": "https://dns.google/dns-query",
-        "detour": "direct"
-      },
-      {
-        "tag": "cloudlfare-dns",
-        "address": "1.1.1.1",
-        "detour": "direct"
-      }
-    ],
-    "strategy": "prefer_ipv4"
-  },
   "inbounds": [
     {
       "type": "vless",
@@ -39,19 +15,5 @@
         "path": "/WUnTsc6WcCHWE5RW6UBU"
       }
     }
-  ],
-  "outbounds": [
-    {
-      "type": "direct",
-      "tag": "direct",
-      "domain_strategy": "ipv4_only"
-    },
-    {
-      "type": "block",
-      "tag": "block"
-    }
-  ],
-  "route": {
-    "final": "direct"
-  }
+  ]
 }
