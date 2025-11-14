@@ -38,18 +38,6 @@
         "type": "ws",
         "path": "/WUnTsc6WcCHWE5RW6UBU"
       }
-    },
-    {
-      "type": "socks",
-      "tag": "socksin",
-      "listen": "::",
-      "listen_port": 65443,
-      "users": [
-        {
-          "username": "Nsc5y2VdTJ6tkukKaecP",
-          "password": "f2PUTCnVw2Y5yzpT6dMR"
-        }
-      ]
     }
   ],
   "outbounds": [
