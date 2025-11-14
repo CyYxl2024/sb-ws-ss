@@ -1,0 +1,78 @@
+{
+  "log": {
+    "level": "warn",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "cloudflare-doh",
+        "address": "https://1.1.1.1/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "google-doh",
+        "address": "https://dns.google/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "cloudlfare-dns",
+        "address": "1.1.1.1",
+        "detour": "direct"
+      }
+    ],
+    "strategy": "prefer_ipv4"
+  },
+  "inbounds": [
+    {
+      "type": "vless",
+      "tag": "vlessWsTls",
+      "listen": "::",
+      "listen_port": 8080,
+      "users": [
+        {
+          "uuid": "f8a9b8c0-d6e5-4f32-8a7b-6c5d4e3f2a1b"
+        }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "/ws"
+      }
+    },
+    {
+      "type": "socks",
+      "tag": "socksin",
+      "listen": "::",
+      "listen_port": 65443,
+      "users": [
+        {
+          "username": "Nsc5y2VdTJ6tkukKaecP",
+          "password": "f2PUTCnVw2Y5yzpT6dMR"
+        }
+      ]
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct",
+      "domain_strategy": "ipv4_only"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "final": "direct",
+    "rule_set": [
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/srs/cn.srs",
+        "download_detour": "direct"
+      }
+    ]
+  }
+}
